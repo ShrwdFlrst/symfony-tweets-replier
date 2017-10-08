@@ -18,11 +18,16 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
         $mentionRepository = $this->getDoctrine()->getRepository(Mention::class);
-        $mentions = $mentionRepository->findAll();
-        dump($mentions);die;
+        $mentionUsers = $mentionRepository->getUsers();
+
+        foreach ($mentionUsers as $k => $userData) {
+            $mentions = $mentionRepository->findBy(['userId' => $userData['userId']]);
+            $mentionUsers[$k]['mentions'] = $mentions;
+        }
+
         // replace this example code with whatever you need
         return $this->render('default/index.html.twig', [
-            'mentions' => $mentions,
+            'users' => $mentionUsers,
         ]);
     }
 }

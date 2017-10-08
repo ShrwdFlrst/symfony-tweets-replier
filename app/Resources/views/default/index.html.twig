@@ -3,11 +3,13 @@
 {% block body %}
     <div id="wrapper">
         <div id="container">
-            {% for userMentions in users %}
-                {% for mention in userMentions %}
-                    {{ mention }}<br>
+            {% for user in users %}
+                <h3>@{{ user.userName }}</h3>
+                {% for mention in user.mentions %}
+                    {{ mention.text }}<br>
                 {% endfor %}
-                Reply...
+                <br> 
+                <div>Reply...</div>
             {% endfor %}
         </div>
     </div>
