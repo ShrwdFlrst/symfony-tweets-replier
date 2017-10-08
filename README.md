@@ -25,8 +25,9 @@ Improvements
 
 - Use a proper local environment; Docker/Vagrant, Nginx/Apache, MySql/Elasticsearch/etc.
 - Proper environment variable setup e.g. DotEnv
-- Paginate the Mentions separately for each user
-- Write 2 scripts to capture tweets
-  * Firehose script to capture realtime tweets, running as a background process
+- Paginate the Mentions separately for each user, via ajax
+- Reply via ajax
+- Have 2 separate scripts to capture tweets
+  * Firehose/Streaming script to capture realtime tweets, running as a background process
   * CLI script using Twitter search as a backup to capture tweets if Firehose is ever down
 - If this was intended to be part of a bigger project, I'd move the code into a self container bundle
