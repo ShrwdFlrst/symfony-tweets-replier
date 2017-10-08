@@ -62,10 +62,20 @@ class Connection
 
     /**
      * @param string $path
-     * @return TwitterOAuth
+     * @return array|object
      */
     public function get(string $path)
     {
         return $this->client->get($path);
+    }
+
+    /**
+     * @param string $path
+     * @param array $params
+     * @return array|object
+     */
+    public function post(string $path, array $params)
+    {
+        return $this->client->post($path, $params);
     }
 }

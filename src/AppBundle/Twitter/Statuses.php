@@ -3,10 +3,10 @@
 namespace AppBundle\Twitter;
 
 /**
- * Class MentionsService
+ * Class Statuses
  * @package AppBundle\Twitter
  */
-class MentionsService
+class Statuses
 {
     /**
      * @var Connection
@@ -25,8 +25,17 @@ class MentionsService
     /**
      * @return array
      */
-    public function get()
+    public function getMentions()
     {
         return $this->connection->get("statuses/mentions_timeline");
+    }
+
+    /**
+     * @param string $status
+     * @return bool
+     */
+    public function postStatus(string $status)
+    {
+        $this->connection->post("statuses/update", ["status" => $status]);
     }
 }

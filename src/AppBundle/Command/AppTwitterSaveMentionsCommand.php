@@ -3,7 +3,7 @@
 namespace AppBundle\Command;
 
 use AppBundle\Entity\MentionFactory;
-use AppBundle\Twitter\MentionsService;
+use AppBundle\Twitter\Statuses;
 use DateTime;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
@@ -16,7 +16,7 @@ class AppTwitterSaveMentionsCommand extends ContainerAwareCommand
 {
     const NAME = 'app:twitter:save-mentions';
     /**
-     * @var MentionsService
+     * @var Statuses
      */
     private $mentionsService;
     /**
@@ -30,11 +30,11 @@ class AppTwitterSaveMentionsCommand extends ContainerAwareCommand
 
     /**
      * AppTwitterSaveMentionsCommand constructor.
-     * @param MentionsService $mentionsService
+     * @param Statuses $mentionsService
      * @param EntityManager $entityManager
      * @param MentionFactory $mentionFactory
      */
-    public function __construct(MentionsService $mentionsService, EntityManager $entityManager, MentionFactory $mentionFactory)
+    public function __construct(Statuses $mentionsService, EntityManager $entityManager, MentionFactory $mentionFactory)
     {
         parent::__construct(self::NAME);
         $this->mentionsService = $mentionsService;
@@ -53,7 +53,7 @@ class AppTwitterSaveMentionsCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $output->writeln('Start');
-        $mentions = $this->mentionsService->get();
+        $mentions = $this->mentionsService->getMentions();
 
         foreach ($mentions as $mention) {
             $entity = $this->mentionFactory->create(
