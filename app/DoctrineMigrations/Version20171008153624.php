@@ -8,7 +8,7 @@ use Doctrine\DBAL\Schema\Schema;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-class Version20171007201117 extends AbstractMigration
+class Version20171008153624 extends AbstractMigration
 {
     /**
      * @param Schema $schema
@@ -18,7 +18,7 @@ class Version20171007201117 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'sqlite', 'Migration can only be executed safely on \'sqlite\'.');
 
-        $this->addSql('CREATE TABLE mention (id INTEGER NOT NULL, user_id INTEGER NOT NULL, text CLOB NOT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE mention (id INTEGER NOT NULL, user_id INTEGER NOT NULL, user_name VARCHAR(20) NOT NULL, text VARCHAR(400) NOT NULL, created_at DATETIME NOT NULL, PRIMARY KEY(id))');
     }
 
     /**

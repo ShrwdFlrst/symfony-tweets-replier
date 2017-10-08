@@ -3,7 +3,12 @@
 {% block body %}
     <div id="wrapper">
         <div id="container">
-            ...
+            {% for userMentions in users %}
+                {% for mention in userMentions %}
+                    {{ mention }}<br>
+                {% endfor %}
+                Reply...
+            {% endfor %}
         </div>
     </div>
 {% endblock %}
