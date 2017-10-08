@@ -11,6 +11,13 @@ Running the frontend accessible at http://127.0.0.1:8000:
 Running the CLI script:
 
     php bin/console app:twitter:save-mentions
+    
+Examples
+-------
+ 
+![Example](https://raw.githubusercontent.com/ShrwdFlrst/symfony-tweets-replier/master/example.GIF)
+
+![Example](https://raw.githubusercontent.com/ShrwdFlrst/symfony-tweets-replier/master/example2.GIF)
 
 
 Improvements
