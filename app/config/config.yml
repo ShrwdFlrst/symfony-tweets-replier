@@ -42,7 +42,7 @@ twig:
 doctrine:
     dbal:
         driver: pdo_sqlite
-        path: '%database_path%'
+        path: '%kernel.root_dir%/../db/tweets_%kernel.environment%.sqlite'
         host: '%database_host%'
         port: '%database_port%'
         dbname: '%database_name%'
